@@ -3,13 +3,14 @@ kind: Service
 metadata:
   name: php-nginx-service
   labels:
-    app.kubernetes.io/component: server
     app.kubernetes.io/name: php-nginx
+    app.kubernetes.io/component: server
     app.kubernetes.io/part-of: php-blog
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 80
+    targetPort: 80
   selector:
     app.kubernetes.io/name: php-nginx
     app.kubernetes.io/component: server
